@@ -7,6 +7,7 @@ use App\Models\Uporabnik;
 use App\Mail\NewAuctionNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class DrazbaController extends Controller
 {
@@ -51,9 +52,15 @@ class DrazbaController extends Controller
             'izvajalec' => 'required|string|max:255',
             'datum_zacetka' => 'required|date',
             'trajanje' => 'required|date',
-            'price' => 'required|numeric|min:0'
+            'price' => 'required|numeric|min:0',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'            
         ]);
     
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('auction_images', 'public');
+            $validated['image'] = $path;
+        }
+
         $auction = Drazba::create($validated);
 
         $subscribedUsers = Uporabnik::where('obvescanje', 1)->get();

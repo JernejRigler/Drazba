@@ -8,7 +8,7 @@
                 <div class="card-header">Create New Auction</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('drazbas.store') }}">
+                    <form method="POST" action="{{ route('drazbas.store') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group mb-3">
@@ -34,6 +34,11 @@
                         <div class="form-group mb-3">
                             <label for="price">Izklicna cena</label>
                             <input type="number" step="0.01" class="form-control" id="price" name="price" required>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="image">Slika izdelka</label>
+                            <input type="file" class="form-control" id="image" name="image">
                         </div>
 
                         <button type="submit" class="btn btn-primary">Ustvari dražbo</button>

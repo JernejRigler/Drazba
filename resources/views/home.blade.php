@@ -17,6 +17,13 @@
         @foreach($auctions as $auction)
         <div class="col-md-4 mb-4">
             <div class="card h-100">
+                @if($auction->image)
+                <img src="{{ asset('storage/' . $auction->image) }}" class="card-img-top" alt="{{ $auction->ime_izdelka }}" style="height: 200px; object-fit: cover;">
+                @else
+                <div class="bg-secondary text-white text-center p-4" style="height: 200px; display: flex; align-items: center; justify-content: center;">
+                    Ni slike
+                </div>
+                @endif
                 <div class="card-body">
                     <h5 class="card-title">{{ $auction->ime_izdelka }}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Izvajalec: {{ $auction->izvajalec }}</h6>

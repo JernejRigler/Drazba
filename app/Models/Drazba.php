@@ -16,7 +16,8 @@ class Drazba extends Model
         'izvajalec',
         'datum_zacetka',
         'trajanje',
-        'price'
+        'price',
+        'image'
     ];
 
 }
