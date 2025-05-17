@@ -24,5 +24,10 @@ Route::get('/', [DrazbaController::class, 'index'])->name('home');
 
 Route::get('/home', [App\Http\Controllers\DrazbaController::class, 'index'])->name('home');
 
-Route::get('/create', [DrazbaController::class, 'create'])->name('drazbas.create');
-Route::post('/auctions', [DrazbaController::class, 'store'])->name('drazbas.store');
+/* Route::get('/create', [DrazbaController::class, 'create'])->name('drazbas.create');
+Route::post('/auctions', [DrazbaController::class, 'store'])->name('drazbas.store'); */
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/create', [DrazbaController::class, 'create'])->name('drazbas.create');
+    Route::post('/auctions', [DrazbaController::class, 'store'])->name('drazbas.store');
+});

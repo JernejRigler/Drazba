@@ -4,7 +4,11 @@
 <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1>Dražbe</h1>
-        <a href="{{ route('drazbas.create') }}" class="btn btn-success">Ustvari dražbo</a>
+        @auth
+            <a href="{{ route('drazbas.create') }}" class="btn btn-success">Ustvari dražbo</a>
+        @else
+            <a href="{{ route('login') }}" class="btn btn-success">Prijava za ustvarjanje dražbe</a>
+        @endauth
     </div>
 
     @if(session('success'))
