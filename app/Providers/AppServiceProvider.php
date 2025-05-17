@@ -24,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // nastavimo slovenski locale, da se najucinkovitejse prikaze "Ustvarjeno x sekund nazaj"
         Carbon::setLocale('sl');
         setlocale(LC_TIME, 'sl_SI.UTF-8');
     }

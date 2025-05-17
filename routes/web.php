@@ -27,7 +27,7 @@ Route::get('/home', [App\Http\Controllers\DrazbaController::class, 'index'])->na
 /* Route::get('/create', [DrazbaController::class, 'create'])->name('drazbas.create');
 Route::post('/auctions', [DrazbaController::class, 'store'])->name('drazbas.store'); */
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/create', [DrazbaController::class, 'create'])->name('drazbas.create');
-    Route::post('/auctions', [DrazbaController::class, 'store'])->name('drazbas.store');
+Route::middleware(['auth'])->group(function () { // za dostop do teh URL-jev moras biti logged-in
+    Route::get('/create', [DrazbaController::class, 'create'])->name('drazbas.create'); // dostop do create drazba forme
+    Route::post('/auctions', [DrazbaController::class, 'store'])->name('drazbas.store'); // POST request po izpolnitvi create forme
 });

@@ -14,10 +14,10 @@ class DrazbaController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->only(['create', 'store']);
+        $this->middleware('auth')->only(['create', 'store']); // poves katere metode require-ajo authorizacijo
     }
     /**
-     * Display a listing of the resource.
+     * Vrne vse tiste drazbe, ki so trenutno aktivne (torej trajanje je v prihodnosti glede na trenutni datum)
      *
      * @return \Illuminate\Http\Response
      */
@@ -31,11 +31,11 @@ class DrazbaController extends Controller
             })
             ->get();
         
-        return view('home', compact('auctions'));
+        return view('home', compact('auctions')); // auctions je v tem primeru sprem. $auctions v home.blade.php
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Prikaze vnosno formo za ustvarjanje drazbe
      *
      * @return \Illuminate\Http\Response
      */
@@ -45,7 +45,7 @@ class DrazbaController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Prejme POST request od vnosne forme, validira podatke da so v skladu s pod. bazo, shrani v bazo ter obvesti vse uporabnike (s push notifications), da je bila kreirana nova drazba (v tem primeru je obvestilo v laravel.log, za dejansko produkcijo bi se uporabljal namenski streznik za posiljanje email-ov)
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response

@@ -41,7 +41,7 @@ class RegisterController extends Controller
     }
 
     /**
-     * Get a validator for an incoming registration request.
+     * Preverimo ce so poslani podatki (POST request) v skladu s pravili pod. baze
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
@@ -66,15 +66,16 @@ class RegisterController extends Controller
     
 }
 
-protected function create(array $data)
-{
-    \Log::debug('d1dd9:', $data);
-    return Uporabnik::create([
-        'ime' => $data['name'],
-        'email' => $data['email'],
-        'geslo' => Hash::make($data['password']),
-        'spol' => $data['spol'],
-        'obvescanje' => $data['obvescanje'] ?? false,
-    ]);
-}
+    // kreiramo novega uporabnika
+    protected function create(array $data)
+    {
+        \Log::debug('d1dd9:', $data);
+        return Uporabnik::create([
+            'ime' => $data['name'],
+            'email' => $data['email'],
+            'geslo' => Hash::make($data['password']),
+            'spol' => $data['spol'],
+            'obvescanje' => $data['obvescanje'] ?? false,
+        ]);
+    }
 }

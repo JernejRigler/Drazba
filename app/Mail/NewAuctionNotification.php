@@ -26,6 +26,7 @@ class NewAuctionNotification extends Mailable
         $this->auction = $auction;
     }
 
+    // kreira email notification iz HTML template-a
     public function build()
     {
         $html = view('emails.new_auction', ['auction' => $this->auction])->render();
