@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Drazba;
+use App\Models\Uporabnik;
+use App\Mail\NewAuctionNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class DrazbaController extends Controller
 {
@@ -51,8 +54,14 @@ class DrazbaController extends Controller
             'price' => 'required|numeric|min:0'
         ]);
     
-        Drazba::create($validated);
-    
+        $auction = Drazba::create($validated);
+
+        $subscribedUsers = Uporabnik::where('obvescanje', 1)->get();
+
+        foreach ($subscribedUsers as $user) {
+            Mail::to($user->email)->send(new NewAuctionNotification($auction));
+        }
+
         return redirect()->route('home')->with('success', 'Auction created successfully!');
     }
 
