@@ -3,8 +3,8 @@
 @section('content')
 <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1>Auctions</h1>
-        <a href="{{ route('drazbas.create') }}" class="btn btn-success">Create Auction</a>
+        <h1>Dražbe</h1>
+        <a href="{{ route('drazbas.create') }}" class="btn btn-success">Ustvari dražbo</a>
     </div>
 
     @if(session('success'))

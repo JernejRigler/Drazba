@@ -62,7 +62,7 @@
                         </div>
 
                         <div class="form-group row">
-                        <label for="spol" class="col-md-4 col-form-label text-md-right">Spol</label>
+                        <label for="spol" class="col-md-4 col-form-label text-md-end">Spol</label>
                         <div class="col-md-6">
                             <select id="spol" class="form-control" name="spol" required>
                                 <option value="">Izberite spol</option>
