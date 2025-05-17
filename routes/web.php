@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DrazbaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
-});
+}); */
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [DrazbaController::class, 'index'])->name('home');
+
+Route::get('/home', [App\Http\Controllers\DrazbaController::class, 'index'])->name('home');
+
+Route::get('/create', [DrazbaController::class, 'create'])->name('drazbas.create');
+Route::post('/auctions', [DrazbaController::class, 'store'])->name('drazbas.store');
