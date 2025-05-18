@@ -5,7 +5,7 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1>Dražbe</h1>
         @auth
-            <a href="{{ route('drazbas.create') }}" class="btn btn-success">Ustvari dražbo</a>
+            <a href="{{ route('drazbas.create') }}" class="btn btn-success">Nova dražba</a>
         @else
             <a href="{{ route('login') }}" class="btn btn-success">Prijava za ustvarjanje dražbe</a>
         @endauth

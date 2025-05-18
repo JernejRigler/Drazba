@@ -11,6 +11,7 @@ Na domači strani spletne aplikacije so prikaze vse trenutno aktivne dražbe (ko
 ### Zahtevana programska oprema za zagon kode:
 - [XAMPP](https://www.apachefriends.org/download.html)
 - [Composer](https://getcomposer.org/)
+- [NPM](https://nodejs.org/en/download)
 
 ### Postopek zagona kode:
 - Zagon backend strežnika:
@@ -29,5 +30,5 @@ Na domači strani spletne aplikacije so prikaze vse trenutno aktivne dražbe (ko
 
 - Zagon frontend-a:
     - composer require laravel/ui
-    - php artisan ui boostrap
+    - php artisan ui bootstrap
     - npm install && npm run dev

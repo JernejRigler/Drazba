@@ -39,9 +39,9 @@ class DrazbaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create()//GenerirajDražbo()
     {
-        return view('drazbas.create');
+        return view('drazbas.ZMUporabnikUstvariDražbo');
     }
 
     /**
@@ -50,7 +50,7 @@ class DrazbaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request)//VrniPodatkeODražbi()
     {
         $validated = $request->validate([
             'ime_izdelka' => 'required|string|max:255',
@@ -68,12 +68,19 @@ class DrazbaController extends Controller
 
         $auction = Drazba::create($validated);
 
+        //UstvariObvestilo()
         $subscribedUsers = Uporabnik::where('obvescanje', 1)->get();
 
-        foreach ($subscribedUsers as $user) {
-            Mail::to($user->email)->send(new NewAuctionNotification($auction));
+        foreach ($subscribedUsers as $user) {  //SVUstvaridražbo_Sistem_za_elektronski_mail_SIM
+            try {
+                Mail::to($user->email)->send(new NewAuctionNotification($auction));
+                //PoštaPoslana(vedno true!)
+            } catch (\Exception $e) {//VrniPodatkeOOBvestilu() 
+                \Log::error('Napaka pri pošiljanju e-pošte uporabniku: ' . $user->email . '. Sporočilo: ' . $e->getMessage());
+            }
         }
 
+        //VrniStanjeCelotneDražbe()
         return redirect()->route('home')->with('success', 'Auction created successfully!');
     }
 
