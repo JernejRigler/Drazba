@@ -9,7 +9,7 @@ return new class extends Migration
     
     public function up()
     {
-        /*
+        
         Schema::rename('users', 'uporabniki');
         
         Schema::table('uporabniki', function (Blueprint $table) {
@@ -18,12 +18,12 @@ return new class extends Migration
             $table->char('spol', 1)->nullable(); // M ali Ž
             $table->boolean('obvescanje')->default(true);
         });
-        */
+        
     }
 
     public function down()
     {
-        /*
+        
         Schema::table('uporabniki', function (Blueprint $table) {
             $table->renameColumn('ime', 'name');
             $table->renameColumn('geslo', 'password');
@@ -31,6 +31,6 @@ return new class extends Migration
         });
         
         Schema::rename('uporabniki', 'users');
-        */
+        
     }
 };
