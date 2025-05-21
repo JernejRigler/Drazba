@@ -35,15 +35,15 @@ Na domači strani spletne aplikacije so prikaze vse trenutno aktivne dražbe (ko
 
 ### Zaslonski posnetki aplikacije
 Homepage:
-![Homepage](photos\primeri_drazb.png)
+![Homepage](photos/primeri_drazb.png)
 
 Stran za registracijo uporabnika:
-![Image B](photos\primer_registracije_uporabnika.png)
+![Image B](photos/primer_registracije_uporabnika.png)
 
 Stran za ustvarjanje dražbe:
-![Image C](photos\primer_ustvarjanja_drazbe.png)
+![Image C](photos/primer_ustvarjanja_drazbe.png)
 
 Primer email template-a, ko se kreira nova dražba:
-![Image A](photos\primer_email_template-a.png)
+![Image A](photos/primer_email_template-a.png)
 
 
